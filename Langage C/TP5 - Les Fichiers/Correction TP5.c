@@ -112,57 +112,56 @@ fgets(titre, 20, stdin);
 // Lecture de tous les enregistrements du fichier :
 while(!feof(fichier) && fread(&bouquin, sizeof(struct livre), 1, fichier))
 {
-if(strcmp(titre, bouquin.titre) == 0)
-{
-// Si le titre est trouvé, on affiche ses informations
-printf("Voici les informations sur le livre : \n");
-afficher(bouquin);
-// Et on demande les nouvelles informations
-printf("Donnez les nouvelles informations :\n");
-bouquin = saisir();
-fseek(fichier, -sizeof(struct livre), SEEK_CUR);
-fwrite(&bouquin, sizeof(struct livre), 1, fichier);
-trouve = 1;
+    if(strcmp(titre, bouquin.titre) == 0)
+    {
+        // Si le titre est trouvé, on affiche ses informations
+        printf("Voici les informations sur le livre : \n");
+        afficher(bouquin);
+        // Et on demande les nouvelles informations
+        printf("Donnez les nouvelles informations :\n");
+        bouquin = saisir();
+        fseek(fichier, -sizeof(struct livre), SEEK_CUR);
+        fwrite(&bouquin, sizeof(struct livre), 1, fichier);
+        trouve = 1;
+    }
 }
-}
-if(trouve == 0)
-printf("Le livre n'a pas ete trouve...\n\n");
-fclose(fichier);
+if(trouve == 0){
+    printf("Le livre n'a pas ete trouve...\n\n");
+    fclose(fichier);
 }
 // 8) Programme principal
 main()
 {
-int choix=0;
-struct livre book;
-while(choix != 5)
-{
-printf("1. Ajouter un livre\n");
-printf("2. Afficher la liste des livres\n");
-printf("3. Rechercher les livres d'un auteur\n");
-printf("4. Modifier un livre\n");
-printf("5. Quitter le programme\n");
-printf("\nVotre choix : ");
-scanf("%d", &choix);
-switch(choix)
-{
-ESIGELEC – Cycle Préparatoire Intégré International
-case 1:
-ajouter();
-break;
-case 2:
-aff_fichier();
-break;
-case 3:
-rechercher();
-break;
-case 4:
-modifier();
-break;
-case 5:
-printf("Fin du programme\n\n");
-break;
-default:
-printf("Cette fonction n'est pas disponible\n\n");
-}
-}
+    int choix=0;
+    struct livre book;
+    while(choix != 5)
+    {
+        printf("1. Ajouter un livre\n");
+        printf("2. Afficher la liste des livres\n");
+        printf("3. Rechercher les livres d'un auteur\n");
+        printf("4. Modifier un livre\n");
+        printf("5. Quitter le programme\n");
+        printf("\nVotre choix : ");
+        scanf("%d", &choix);
+        switch(choix)
+        {
+            case 1:
+                ajouter();
+            break;
+            case 2:
+                aff_fichier();
+            break;
+            case 3:
+                rechercher();
+            break;
+            case 4:
+                modifier();
+            break;
+            case 5:
+                printf("Fin du programme\n\n");
+            break;
+            default:
+                printf("Cette fonction n'est pas disponible\n\n");
+        }
+    }
 }
