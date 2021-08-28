@@ -1,2 +1,4 @@
-# Info-P2
-Cours &amp; TP informatique P2
+# Informatique P2 ESIGELEC
+
+- Sujets &amp; corrections pour les TP de C
+- Cours &amp; sujets pour les TP sur les bases de données
