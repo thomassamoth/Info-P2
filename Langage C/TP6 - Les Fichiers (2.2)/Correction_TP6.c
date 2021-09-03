@@ -1,4 +1,5 @@
-/*ESIGELEC – Cycle Préparatoire Intégré International
+/*
+ESIGELEC – Cycle Préparatoire Intégré International
 TP n°6 – Les fichiers
 Exercice :
 Cet exercice a pour but d'écrire un programme permettant de gérer la liste des élèves
@@ -14,27 +15,23 @@ suffira pour cet exercice).
 Écrire des fonctions permettant :
     - D'ajouter un élève dans le tableau,
     - D'afficher le contenu du tableau,
-De modifier le groupe d'un élève dont le nom et le prénom seront demandés à
+    - De modifier le groupe d'un élève dont le nom et le prénom seront demandés à
 l'utilisateur
-De supprimer un élève du tableau.
+    - De supprimer un élève du tableau.
 3. Écrire une fonction permettant d'enregistrer le contenu du tableau dans le fichier
 eleves.dat.
+
 4. Écrire une fonction permettant de lire le contenu du fichier eleves.dat, et de le
 stocker dans un tableau. Cette fonction sera appelée lors du lancement du
 programme.
+
 À la fin, votre programme principal pourra par exemple avoir le menu suivant :
-1.
-2.
-3.
-4.
-5.
-6.
-Ajouter un eleve
-Afficher la liste des eleves
-Changer un eleve de groupe
-Supprimer un eleve
-Enregistrer dans le fichier
-Quitter
+1. Ajouter un eleve
+2. Afficher la liste des eleves
+3. Changer un eleve de groupe
+4. Supprimer un eleve
+5. Enregistrer dans le fichier
+6. Quitter
 */
 
 #include <stdio.h>
