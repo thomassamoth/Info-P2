@@ -2,7 +2,7 @@
 *Réécriture du cours sur les structures*
 
 ## Introduction
-- équivaut aux enregistrements en algorithmique
+- équivalent des enregistrements en algorithmique
 
 - 1 personne ➡ plusieurs variables ➡ **Comment faire avec plusieurs personnes ?**  
       ↘ on utilise 1 seule variable (structure) et on a ensuite un tableau de structures
