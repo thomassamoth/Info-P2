@@ -1,31 +1,28 @@
 /*
-ESIGELEC – Cycle Préparatoire Intégré International
-TP n°6 – Les fichiers
+ESIGELEC â€“ Cycle Preparatoire Integre International
+TP nÂ°6 â€“ Les fichiers
 Exercice :
-Cet exercice a pour but d'écrire un programme permettant de gérer la liste des élèves
+Cet exercice a pour but d'ecrire un programme permettant de gerer la liste des eleves
 de l'Esigelec.
-1. Définir une structure eleve permettant de stocker les informations suivantes :
-    - nom de l'élève (taille max=25),
-    - prénom de l'élève (taille max=25),
+1. Definir une structure eleve permettant de stocker les informations suivantes :
+    - nom de l'eleve (taille max=25),
+    - prenom de l'eleve (taille max=25),
     - date de naissance,
-    - groupe de l'élève (1, 2, etc...).
-
-2. La liste des élèves doit être stockée dans un tableau (un tableau de taille 100
+    - groupe de l'eleve (1, 2, etc...).
+2. La liste des eleves doit Ãªtre stockee dans un tableau (un tableau de taille 100
 suffira pour cet exercice).
-Écrire des fonctions permettant :
-    - D'ajouter un élève dans le tableau,
+Ã‰crire des fonctions permettant :
+    - D'ajouter un eleve dans le tableau,
     - D'afficher le contenu du tableau,
-    - De modifier le groupe d'un élève dont le nom et le prénom seront demandés à
+    - De modifier le groupe d'un eleve dont le nom et le prenom seront demandes Ã 
 l'utilisateur
-    - De supprimer un élève du tableau.
-3. Écrire une fonction permettant d'enregistrer le contenu du tableau dans le fichier
+    - De supprimer un eleve du tableau.
+3. Ã‰crire une fonction permettant d'enregistrer le contenu du tableau dans le fichier
 eleves.dat.
-
-4. Écrire une fonction permettant de lire le contenu du fichier eleves.dat, et de le
-stocker dans un tableau. Cette fonction sera appelée lors du lancement du
+4. Ã‰crire une fonction permettant de lire le contenu du fichier eleves.dat, et de le
+stocker dans un tableau. Cette fonction sera appelee lors du lancement du
 programme.
-
-À la fin, votre programme principal pourra par exemple avoir le menu suivant :
+Ã€ la fin, votre programme principal pourra par exemple avoir le menu suivant :
 1. Ajouter un eleve
 2. Afficher la liste des eleves
 3. Changer un eleve de groupe
@@ -37,23 +34,23 @@ programme.
 #include <stdio.h>
 #include <string.h>
 #define taille 100
-// Définition de la structure eleve et de sa sous-structure date :
-struct date
+// Definition de la structure eleve et de sa sous-structure date :
+struct Date
 {
     int jour;
     int mois;
     int annee;
 };
 
-struct eleve
+struct Eleve
 {
     char nom[25];
     char prenom[25];
-    struct date anniversaire;
+    struct Date anniversaire;
     int groupe;
 };
-// Fonction permettant d'ajouter un élève à une position donnée d'un tableau
-void ajouter(struct eleve tab[], int position)
+// Fonction permettant d'ajouter un eleve Ã  une position donnee d'un tableau
+void ajouter(struct Eleve tab[], int position)
 {
     fflush(stdin);
     printf("Entrez le nom : ");
@@ -70,33 +67,37 @@ void ajouter(struct eleve tab[], int position)
     printf("Numero du groupe : ");
     scanf("%d", &tab[position].groupe);
 }
-// Fonction permettant d'afficher les informations d'un élève :
-void afficher_eleve(struct eleve e)
+// Fonction permettant d'afficher les informations d'un eleve :
+void afficher_eleve(struct Eleve e)
 {
     printf(" %s %s ne le %d/%d/%d\n Groupe %d\n", e.nom, e.prenom,
     e.anniversaire.jour, e.anniversaire.mois, e.anniversaire.annee, e.groupe);
 }
-// Fonction permettant d'afficher les informations des élèves d'un tableau :
-void afficher(struct eleve tab[], int position)
+
+// Fonction permettant d'afficher les informations des eleves d'un tableau :
+void afficher(struct Eleve tab[], int position)
 {
     int i;
     for(i=0; i < position; i++)
-    afficher_eleve(tab[i]);
+    {
+        afficher_eleve(tab[i]);
+        printf("------------------\n");
+    }
 }
-// Fonction permettant de modifier les informations d'un élève du tableau :
-void modifier(struct eleve tab[], int position)
+// Fonction permettant de modifier les informations d'un eleve du tableau :
+void modifier(struct Eleve tab[], int position)
 {
     char nom[25], prenom[25];
-    int trouve=0; //ESIGELEC – Cycle Préparatoire Intégré International
+    int trouve=0;
     int i=0;
-    // Demander à l'utilisateur le nom et le prénom de l'élève à modifier :
+    // Demander a l'utilisateur le nom et le prenom de l'eleve a modifier :
     fflush(stdin);
     printf("Entrez le nom : ");
     fgets(nom, 25, stdin);
     fflush(stdin);
     printf("Entrez le prenom : ");
     fgets(prenom, 25, stdin);
-    // Recherche de l'élève dans le tableau :
+    // Recherche de l'eleve dans le tableau :
     while(trouve == 0 && i < position)
     {
         if(strcmp(tab[i].nom, nom) == 0 && strcmp(tab[i].prenom, prenom) == 0)
@@ -107,12 +108,15 @@ void modifier(struct eleve tab[], int position)
         }
         i++;
     }
-    if(trouve == 0)
+    if(trouve == 0){
     printf("Eleve inconnu\n");
+    }
+
 }
-// Supprimer un élève du tableau
-// La fonction retourne 1 si la suppression a été faite, et 0 sinon.
-int supprimer(struct eleve tab[], int position)
+
+// Supprimer un eleve du tableau
+// La fonction retourne 1 si la suppression a ete faite, et 0 sinon.
+int supprimer(struct Eleve tab[], int position)
 {
     char nom[25], prenom[25];
     int trouve=0;
@@ -129,7 +133,7 @@ int supprimer(struct eleve tab[], int position)
         if(strcmp(tab[i].nom, nom) == 0 && strcmp(tab[i].prenom, prenom) == 0)
         {
             trouve=1;
-            // Supprimer le contenu de la case en décalant:
+            // Supprimer le contenu de la case en decalant:
             for(j=i+1; j < position; j++)
             {
                 strcpy(tab[j-1].nom, tab[j].nom);
@@ -143,39 +147,45 @@ int supprimer(struct eleve tab[], int position)
         i++;
     }
     if(trouve == 0)
-    printf("Eleve inconnu\n"); //ESIGELEC – Cycle Préparatoire Intégré International
+        printf("Eleve inconnu\n");
     else
-    printf("Eleve supprime\n");
+        printf("Eleve supprime\n");
     return trouve;
 }
-// Enregistrement des élèves du tableau dans le fichier eleves.dat
-void enregistrer(struct eleve tab[], int position)
+// Enregistrement des eleves du tableau dans le fichier eleves.dat
+void enregistrer(struct Eleve tab[], int position)
 {
     FILE *fichier;
     int i;
     fichier = fopen("eleves.dat", "w");
     for(i=0; i < position; i++)
-    fwrite(&tab[i], sizeof(struct eleve), 1, fichier);
+    {
+        fwrite(&tab[i], sizeof(struct Eleve), 1, fichier);
+    }
+
     fclose(fichier);
 }
-// Lecture du fichier eleves.dat et écriture dans le tableau
-int lire(struct eleve tab[])
+// Lecture du fichier eleves.dat et ecriture dans le tableau
+int lire(struct Eleve tab[])
 {
     int i=0;
     FILE *fichier=fopen("eleves.dat", "r");
-    while(fread(&tab[i], sizeof(struct eleve), 1, fichier) && !feof(fichier))
-    i++;
-    return i;
+    while(fread(&tab[i], sizeof(struct Eleve), 1, fichier) && !feof(fichier))
+    {
+        i++;
+        return i;
+    }
 }
 
 int main()
 {
-    struct eleve tableau[taille];
+    struct Eleve tableau[taille];
     int indice=0;
     int choix, resultat;
     indice = lire(tableau);
     do // Affichage du menu de choix :
     {
+        printf(" === MENU ===\n");
         printf("1. Ajouter un eleve\n");
         printf("2. Afficher la liste des eleves\n");
         printf("3. Changer un eleve de groupe\n");
@@ -192,27 +202,33 @@ int main()
                     indice++;
                 }
                 else
-                printf("Tableau plein\n");
+                    printf("Tableau plein\n");
             break;
+
             case 2 :
                 printf("Liste des eleves :\n");
                 afficher(tableau, indice);
             break;
+
             case 3 :
                 modifier(tableau, indice);
             break;
+
             case 4 :
                 resultat = supprimer(tableau, indice);
                 if(resultat == 1)
-                indice--;
+                    indice--;
             break;
+
             case 5 :
                 enregistrer(tableau, indice);
             break;
+
             case 6 :
                 printf("Fin du programme, enregistrement dans le fichier\n");
                 enregistrer(tableau, indice);
             break;
+
             default :
                 printf("Choix non valide\n");
         }
