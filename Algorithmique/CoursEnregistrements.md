@@ -73,3 +73,12 @@ Concessionnaire : ENREGISTREMENT
  FIN
  ```
  #### Accès aux valeurs
+ ```Python
+titine ← Voiture
+Pierre ← Conducteur
+Pierre.sa_voiture.marque ← "Marque"
+
+Garage ← Concessionnaire
+Garage.catalogue[0] ← titine
+Garage.catalogue[0].cylindree ← 2.3
+```
