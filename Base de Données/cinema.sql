@@ -79,7 +79,7 @@ INSERT INTO Acteur
 VALUES	(1, 'FONDA', 'Henry', '1905-05-16', 'M', 'USA'),
 	(2, 'LEIGH', 'Viven', '1913-11-05', 'F', 'UK'),
 	(3, 'FORD', 'Harrison', '1942-07-13', 'M', 'USA'),
-	(4, 'HAMIL', 'Mark', '1951-09-25', 'M', 'USA'),
+	(4, 'HAMILL', 'Mark', '1951-09-25', 'M', 'USA'),
 	(5, 'WINSLET', 'Kate', '1975-10-05', 'F', 'UK'),
 	(6, 'DI CAPRIO', 'Leonardo', '1974-11-11', 'M', 'USA'),
 	(7, 'CONNERY', 'Sean', '1930-08-30', 'M', 'UK'),
